@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Entertainment Guru</h1>
+    <p>By Nawal and Denny</p>
+
+    <p>
+        How to use: Select your preferences from the following options 
+        that best align with what type of series/movie you'd like to watch.
+        After selecting your preferences, then press the "Get Recs" button
+        to get recommendations.
+    </p>
+
+    <div id="genres">
+        <p>Q1.1 How important is the genre of what you're watching?</p>
+        <div>
+            <input type="radio" id="genre-important" name="important" value="important" />
+            <label for="genre-important">Important</label>
+      
+            <input type="radio" id="genre-simportant" name="simportant" value="simportant" />
+            <label for="genre-simportant">Somewhat Important</label>
+      
+            <input type="radio" id="genre-nimportant" name="nimportant" value="nimportant" />
+            <label for="genre-nimportant">Not Important</label>
+        </div>
+        <p>Q1.2 What genre(s) do you want to watch?</p>
+        <input 
+            id="genre-any" 
+            type="checkbox" 
+            name="genre-any" 
+            value="any"/>
+        <label for="genre-any">Any Genre</label>
+    </div>
+    
+    <br/>
+    <button id="rec-button">Get Recs</button>
+    <br>
+    <div id="results"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="backend.js"></script>
+</body>
+</html>
