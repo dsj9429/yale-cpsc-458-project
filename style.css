@@ -23,19 +23,22 @@ p {
 
 /* Style for the genre section to list vertically */
 #genres {
-    padding: 20px; /* Add padding to the genres section */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Stack elements vertically */
+    /*gap: 10px; /* Add space between genres */
+    padding: 20px; /* Padding for internal spacing */
 }
 
 /* Style for radio buttons and checkboxes */
-input[type="radio"], input[type="checkbox"] {
+/* input[type="radio"], input[type="checkbox"] {
     margin-right: 10px; /* Add space between input and label */
-}
+/*} */
 
 /* Style for labels */
-label {
+/* label {
     font-weight: normal; /* Default font weight for labels */
-    margin-right: 20px; /* Add space between labels */
-}
+    /*margin-right: 20px; /* Add space between labels */
+/*} */
 
 /* Style for buttons */
 button {
@@ -61,4 +64,9 @@ button:hover {
     border-radius: 5px; /* Rounded corners */
     margin: 20px; /* Add space around the section */
     min-height: 50px; /* Minimum height for the section */
+}
+
+.button-container {
+    text-align: center; /* Center the content within this container */
+    padding: 20px; /* Optional: add padding for spacing */
 }

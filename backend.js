@@ -12,10 +12,10 @@ var genre_ids = []
 const options = {
     method: 'GET',
     headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmU2Yzk4NGY5ZjNiMjJjYzhjMjVlMjEzNjQzMWQwMiIsInN1YiI6IjY2MjA0ZmUwM2Y0ODMzMDE4NjczMGQ0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kWMQDX-qrAB8sZtSpP2L5Q05ZF_ZvFzQNhUkG6YxGgg'
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmU2Yzk4NGY5ZjNiMjJjYzhjMjVlMjEzNjQzMWQwMiIsInN1YiI6IjY2MjA0ZmUwM2Y0ODMzMDE4NjczMGQ0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kWMQDX-qrAB8sZtSpP2L5Q05ZF_ZvFzQNhUkG6YxGgg'
     }
-  };
+};
 fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
     .then(response => response.json())
     .then(response => {
@@ -37,7 +37,26 @@ fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
     })
     .catch(err => console.error(err));
 
-function getImportance(name){
+// Validation function to check if all questions have at least one option selected
+function validateSelection() {
+    // Check if any importance level is selected
+    var genreImportance = getImportance("genre");
+    if (genreImportance === "None Selected") {
+        alert("Please select the importance of genres (Question 1.1)");
+        return false; // Validation failed
+    }
+
+    // Check if any genre is selected
+    var selectedGenres = getSelectedGenres();
+    if (selectedGenres.length === 0 && !$("#genre-any").is(":checked")) {
+        alert("Please select at least one genre (Question 1.2) or choose 'Any Genre'");
+        return false; // Validation failed
+    }
+
+    return true; // Validation successful
+}
+
+function getImportance(name) {
     /*
      * Returns the importance level that the
      * user has selected. Assumes that the radio
@@ -51,14 +70,14 @@ function getImportance(name){
     ids.forEach(id => {
         // if the id has been checked, then return
         // that importance value
-        if($(id).is(":checked")){
+        if ($(id).is(":checked")) {
             selection = $(id).val();
         }
     })
     return selection
-}  
+}
 
-function getSelectedGenres(){
+function getSelectedGenres() {
     /**
      * Returns an array of the 
      * genres that the user has 
@@ -67,14 +86,14 @@ function getSelectedGenres(){
      * If any genre is checked,
      * then returns empty array
      */
-    if($("#genre-any").is(":checked")){ // return all genres
+    if ($("#genre-any").is(":checked")) { // return all genres
         return []
     }
-    else{
+    else {
         var output = []
-        for(let i = 0; i < genres.length; i++){
+        for (let i = 0; i < genres.length; i++) {
             genre = genres[i]
-            if($(`#genre-${genre}`).is(":checked")){
+            if ($(`#genre-${genre}`).is(":checked")) {
                 output.push(genre_ids[i])
             }
         }
@@ -82,23 +101,28 @@ function getSelectedGenres(){
     }
 
 }
-function getImagePath(path){
+function getImagePath(path) {
     // Returns the image address given a particular path
     return "https://image.tmdb.org/t/p/original" + path
 }
 
 $("#rec-button").click(() => {
-    // DEBUGGING
-    console.log(genres)
-    console.log(getImportance("genre"))
-    var selected_genres = getSelectedGenres()
-    console.log(selected_genres)
-    console.log(genre_ids)
+
+    // Validate selections before proceeding
+    if (!validateSelection()) {
+        return; // If validation fails, stop further action
+    }
+
+    // If validation passes, proceed with the original action
+    console.log("Valid selections made");
+    console.log(getImportance("genre"));
+    var selected_genres = getSelectedGenres();
+    console.log(selected_genres);
     // Fetch movies that match genre requirements
     // Uses the decision based system
     // to generate the query URL
     var url = "https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&sort_by=popularity.desc"
-    if(selected_genres.length > 0){ // only add genre param IF user has specified
+    if (selected_genres.length > 0) { // only add genre param IF user has specified
         var param = "&with_genres="
         // the comma (,) acts as an AND operator for the API
         param += selected_genres.join(",")
@@ -109,12 +133,12 @@ $("#rec-button").click(() => {
     const options = {
         method: 'GET',
         headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmU2Yzk4NGY5ZjNiMjJjYzhjMjVlMjEzNjQzMWQwMiIsInN1YiI6IjY2MjA0ZmUwM2Y0ODMzMDE4NjczMGQ0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kWMQDX-qrAB8sZtSpP2L5Q05ZF_ZvFzQNhUkG6YxGgg'
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmU2Yzk4NGY5ZjNiMjJjYzhjMjVlMjEzNjQzMWQwMiIsInN1YiI6IjY2MjA0ZmUwM2Y0ODMzMDE4NjczMGQ0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kWMQDX-qrAB8sZtSpP2L5Q05ZF_ZvFzQNhUkG6YxGgg'
         }
-      };
-      
-      fetch(url, options)
+    };
+
+    fetch(url, options)
         .then(response => response.json())
         .then(response => {
             results = response["results"]
