@@ -30,15 +30,15 @@ p {
 }
 
 /* Style for radio buttons and checkboxes */
-/* input[type="radio"], input[type="checkbox"] {
+input[type="radio"], input[type="checkbox"] {
     margin-right: 10px; /* Add space between input and label */
-/*} */
+}
 
 /* Style for labels */
-/* label {
+label {
     font-weight: normal; /* Default font weight for labels */
     /*margin-right: 20px; /* Add space between labels */
-/*} */
+}
 
 /* Style for buttons */
 button {

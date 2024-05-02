@@ -113,6 +113,9 @@ $("#rec-button").click(() => {
         return; // If validation fails, stop further action
     }
 
+    $("#results").empty(); // Clear previous results
+    $("#results").show(); // Show the results div
+
     // If validation passes, proceed with the original action
     console.log("Valid selections made");
     console.log(getImportance("genre"));
