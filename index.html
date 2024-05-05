@@ -20,10 +20,10 @@
             <input type="radio" id="genre-important" name="important" value="important" />
             <label for="genre-important">Important</label>
             <br/>
-            <input type="radio" id="genre-simportant" name="simportant" value="simportant" />
+            <input type="radio" id="genre-simportant" name="important" value="simportant" />
             <label for="genre-simportant">Somewhat Important</label>
             <br/>
-            <input type="radio" id="genre-nimportant" name="nimportant" value="nimportant" />
+            <input type="radio" id="genre-nimportant" name="important" value="nimportant" />
             <label for="genre-nimportant">Not Important</label>
             <br/>
         </div>
@@ -31,6 +31,37 @@
         <input id="genre-any" type="checkbox" name="genre-any" value="any" />
         <label for="genre-any">Any Genre</label>
     </div>
+
+    <div id="languages">
+        <p>Q1.3 Which country would you want to visit in the future?</p>
+        <fieldset id="language-field">
+            <div>
+                <input 
+                    id="language-france" 
+                    type="radio" 
+                    name="language" 
+                    value="france"/>
+                <label for="language-france">France</label>
+            </div>
+            <div>
+                <input 
+                    id="language-spanish" 
+                    type="radio" 
+                    name="language" 
+                    value="spanish"/>
+                <label for="language-spanish">Mexico</label>
+            </div>
+            <div>
+                <input 
+                    id="language-chinese" 
+                    type="radio" 
+                    name="language" 
+                    value="chinese"/>
+                <label for="language-chinese">Chinese</label>
+            </div>
+        </fieldset>
+    </div>
+
     <div class="button-container">
         <button id="rec-button">Get Recs</button>
     </div>
