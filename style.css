@@ -24,7 +24,6 @@ p {
 
 /* Style for the genre section to list vertically */
 #genres {
-    display: flex; /* Flexbox layout */
     flex-direction: column; /* Stack elements vertically */
     gap: 15px; /* Add space between genres */
     padding: 30px; /* Increased padding for internal spacing */
