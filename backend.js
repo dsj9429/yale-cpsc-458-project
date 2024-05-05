@@ -93,12 +93,12 @@ function getFieldsetChoice(id){
     return $('input:checked', '#'+id).val()
 }
 
-// test a function by calling alert on it
-$(document).on('keypress', function(e) {
-    if(e.keyCode = 32){ // if spacebar
-        alert(getFieldsetChoice("language-field"))
-    }
-});
+// // test a function by calling alert on it
+// $(document).on('keypress', function(e) {
+//     if(e.keyCode = 32){ // if spacebar
+//         alert(getFieldsetChoice("language-field"))
+//     }
+// });
 
 $("#rec-button").click(() => {
     // DEBUGGING
@@ -110,7 +110,7 @@ $("#rec-button").click(() => {
     // Fetch movies that match genre requirements
     // Uses the decision based system
     // to generate the query URL
-    var url = "https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&sort_by=popularity.desc"
+    var url = "https://api.themoviedb.org/3/discover/movie?page=1&sort_by=popularity.desc"
     if(selected_genres.length > 0){ // only add genre param IF user has specified
         var param = "&with_genres="
         // the comma (,) acts as an AND operator for the API
@@ -120,9 +120,10 @@ $("#rec-button").click(() => {
     }
     languageVal = getFieldsetChoice("language-field")
     if(languageVal){
-        // var param = "&language=" + languageVal
-        // assumes that languageVal is the correct param format
-        alert(languageVal)
+        // Append language parameter to the URL
+        var langParam = "&language=" + languageVal;
+        console.log(langParam)
+        url += langParam;
     }
 
     // basic no need to change
