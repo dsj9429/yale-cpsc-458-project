@@ -151,9 +151,12 @@ $("#rec-button").click(() => {
             results.forEach(movie => {
                 $("#results").append(
                     `
-                    <div>
-                        <h3>${movie.title}</h3>
-                        <img width="200px" src="${getImagePath(movie.poster_path)}"/>
+                    <div class="movie-container">
+                        <div class="movie-info">
+                            <h3>${movie.title}</h3>
+                            <p>${movie.overview}</p> <!-- Display movie synopsis -->
+                        </div>
+                        <img class="movie-poster" src="${getImagePath(movie.poster_path)}"/>
                     </div>
                     `
                 )
@@ -164,4 +167,5 @@ $("#rec-button").click(() => {
             $("#res-desc").append("This is the explanation")
         })
         .catch(err => console.error(err));
+
 })

@@ -73,5 +73,23 @@ button:hover {
 
 /* Add space between sort options and languages */
 #sort-options {
-    margin-top: 40px; /* Add more margin top for spacing */
+    padding: 30px;
+}
+
+/* Style for movie container */
+.movie-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Style for movie poster */
+.movie-poster {
+    width: 200px;
+    margin-right: 20px;
+}
+
+/* Style for movie info */
+.movie-info {
+    flex: 1;
 }
