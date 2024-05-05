@@ -110,7 +110,7 @@ $("#rec-button").click(() => {
     // Fetch movies that match genre requirements
     // Uses the decision based system
     // to generate the query URL
-    var url = "https://api.themoviedb.org/3/discover/movie?page=1&sort_by=popularity.desc"
+    var url = "https://api.themoviedb.org/3/discover/movie?page=1"
     if(selected_genres.length > 0){ // only add genre param IF user has specified
         var param = "&with_genres="
         // the comma (,) acts as an AND operator for the API
@@ -124,6 +124,12 @@ $("#rec-button").click(() => {
         var langParam = "&language=" + languageVal;
         console.log(langParam)
         url += langParam;
+    }
+
+    // Get selected sort option
+    var sortBy = $("#sort-by").val();
+    if (sortBy) {
+        url += "&sort_by=" + sortBy;
     }
 
     // basic no need to change

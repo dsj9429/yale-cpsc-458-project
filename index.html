@@ -33,15 +33,23 @@
     </div>
 
     <div id="languages">
-        <p>Q1.3 Which country interests you the most?</p>
+        <p>Q1.3 What language do you speak?</p>
         <fieldset id="language-field">
             <div>
                 <input 
-                    id="language-france" 
+                    id="language-english" 
+                    type="radio" 
+                    name="language" 
+                    value="en-US"/>
+                <label for="language-french">English</label>
+            </div>
+            <div>
+                <input 
+                    id="language-french" 
                     type="radio" 
                     name="language" 
                     value="fr-FR"/>
-                <label for="language-france">France</label>
+                <label for="language-french">French</label>
             </div>
             <div>
                 <input 
@@ -49,7 +57,7 @@
                     type="radio" 
                     name="language" 
                     value="es-ES"/>
-                <label for="language-spanish">Mexico</label>
+                <label for="language-spanish">Spanish</label>
             </div>
             <div>
                 <input 
@@ -57,9 +65,29 @@
                     type="radio" 
                     name="language" 
                     value="zh-CN"/>
-                <label for="language-chinese">China</label>
+                <label for="language-chinese">Chinese</label>
             </div>
         </fieldset>
+    </div>
+
+    <div id="sort-options">
+        <label for="sort-by">Sort By:</label>
+        <select id="sort-by">
+            <option value="original_title.asc">Title (A-Z)</option>
+            <option value="original_title.desc">Title (Z-A)</option>
+            <option value="popularity.asc">Popularity (Low to High)</option>
+            <option value="popularity.desc">Popularity (High to Low)</option>
+            <option value="revenue.asc">Revenue (Low to High)</option>
+            <option value="revenue.desc">Revenue (High to Low)</option>
+            <option value="primary_release_date.asc">Release Date (Old to New)</option>
+            <option value="primary_release_date.desc">Release Date (New to Old)</option>
+            <option value="title.asc">Title (A-Z)</option>
+            <option value="title.desc">Title (Z-A)</option>
+            <option value="vote_average.asc">Vote Average (Low to High)</option>
+            <option value="vote_average.desc">Vote Average (High to Low)</option>
+            <option value="vote_count.asc">Vote Count (Low to High)</option>
+            <option value="vote_count.desc">Vote Count (High to Low)</option>
+        </select>
     </div>
 
     <div class="button-container">
